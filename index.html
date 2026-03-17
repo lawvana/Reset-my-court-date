@@ -393,6 +393,55 @@ footer {
 @media(max-width:768px){
   .hero-sticker { right:2%; bottom:2%; width:120px; }
 }
+
+/* ── STICKER FRY ── */
+.hero-sticker {
+  position:absolute;
+  right:2%;
+  top:50%;
+  transform:translateY(-52%);
+  z-index:3;
+  width:clamp(240px,30vw,400px);
+  opacity:0;
+  animation:stickerDrop .7s cubic-bezier(.34,1.56,.64,1) .3s forwards;
+  pointer-events:none;
+}
+@keyframes stickerDrop {
+  from { opacity:0; transform:translateY(-42%) rotate(-8deg) scale(.85); }
+  to   { opacity:1; transform:translateY(-52%) rotate(-4deg) scale(1); }
+}
+.hero-sticker img {
+  width:100%;
+  display:block;
+  /* drop shadow to simulate sticker sitting on surface */
+  filter: drop-shadow(4px 8px 0px rgba(0,0,0,.6))
+          drop-shadow(0px 0px 1px rgba(0,0,0,.4));
+}
+/* small "DON'T PANIC" label below like a sticker caption */
+.sticker-label {
+  position:absolute;
+  bottom:-18px;
+  right:10%;
+  font-family:'DM Mono',monospace;
+  font-size:.55rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.6;
+  transform:rotate(-4deg);
+}
+@media(max-width:900px){
+  .hero-sticker {
+    position:relative;
+    right:auto; top:auto;
+    transform:rotate(-4deg) scale(1);
+    animation:none;
+    opacity:1;
+    width:180px;
+    margin:0 auto -20px;
+  }
+  .sticker-label { display:none; }
+}
 </style>
 </head>
 <body>
@@ -454,23 +503,10 @@ footer {
     </div>
   </div>
 
-  <!-- PUNCH-OUT FRY IMAGE -->
-  <div class="hero-punch">
-    <div class="punch-ring-outer"></div>
-    <div class="punch-ring-mid"></div>
-    <div class="punch-arc"></div>
-    <div class="punch-circle">
-      <img src="/assets/img/dont-panic.png" alt="Don't Panic">
-    </div>
-  </div>
-
-
-  <!-- FRY STICKER -->
+  <!-- STICKER FRY -->
   <div class="hero-sticker">
-    <div class="sticker-inner">
-      <img src="/assets/img/dont-panic.png" alt="Don't Panic">
-    </div>
-    <div class="sticker-label">Don't panic.</div>
+    <img src="/assets/img/dont-panic.png" alt="Don't Panic — it's fixable">
+    <div class="sticker-label">← that’s you right now</div>
   </div>
 
 </section>
