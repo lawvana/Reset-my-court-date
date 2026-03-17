@@ -278,22 +278,29 @@ footer {
 
 .hero-punch {
   position:absolute;
-  right:3%;
-  top:50%;
-  transform:translateY(-50%);
+  right:0;
+  width:50%;
+  top:0; bottom:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   z-index:3;
-  width:clamp(260px,32vw,420px);
-  aspect-ratio:1;
   opacity:0;
   animation:fadeIn .9s .4s forwards;
 }
-@keyframes fadeIn{from{opacity:0;transform:translateY(-46%) scale(.92)}to{opacity:1;transform:translateY(-50%) scale(1)}}
+@keyframes fadeIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.hero-punch-inner {
+  width:clamp(240px,28vw,380px);
+  aspect-ratio:1;
+  position:relative;
+}
 .punch-ring-outer {
   position:absolute;
   inset:-14px;
   border-radius:50%;
   border:4px solid var(--gold);
   opacity:.35;
+  pointer-events:none;
 }
 .punch-ring-mid {
   position:absolute;
@@ -301,6 +308,7 @@ footer {
   border-radius:50%;
   border:2px dashed rgba(196,154,60,.5);
   animation:spin 18s linear infinite;
+  pointer-events:none;
 }
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .punch-circle {
@@ -334,12 +342,10 @@ footer {
   border-left-color:transparent;
   opacity:.6;
 }
-/* adjust hero layout for photo */
-.hero { padding-right: max(3%, calc(clamp(260px,32vw,420px) + 5%)); }
+/* hero layout — photo occupies right 50% */
 @media(max-width:900px){
-  .hero-punch { position:relative; right:auto; top:auto; transform:none; width:200px; margin:0 auto; animation:none; opacity:1; }
-  .hero { padding-right:2.5rem; }
-  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .hero-punch { position:relative; width:100%; height:220px; top:auto; bottom:auto; }
+  .hero-punch-inner { width:200px; }
 }
 
 /* ── FRY STICKER ── */
